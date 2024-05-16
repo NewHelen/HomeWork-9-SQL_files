@@ -10,13 +10,13 @@ CREATE TABLE IF NOT EXISTS worker
     );
 
 -- Створення таблиці для клієнтів
-CREATE TABLE client (
+CREATE TABLE IF NOT EXISTS client (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     NAME VARCHAR(1000) NOT NULL CHECK(LENGTH(NAME) >= 2 AND LENGTH(NAME) <= 1000)
 );
 
 -- Створення таблиці для проєктів
-CREATE TABLE project (
+CREATE TABLE IF NOT EXISTS project (
     ID INT PRIMARY KEY AUTO_INCREMENT,
     CLIENT_ID INT,
     START_DATE DATE,
@@ -25,7 +25,7 @@ CREATE TABLE project (
 );
 
 -- Створення таблиці для зв'язку працівників і проєктів
-CREATE TABLE project_worker (
+CREATE TABLE IF NOT EXISTS project_worker (
     PROJECT_ID INT,
     WORKER_ID INT,
     PRIMARY KEY (PROJECT_ID, WORKER_ID),
